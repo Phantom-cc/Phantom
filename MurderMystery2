@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
- local Window = OrionLib:MakeWindow({Name = " 👑 Kursed X Gens | Murder Mystery 2 🔪", HidePremium = false, IntroText = "Kursed X Gens", SaveConfig = true, ConfigFolder = "OrionTest"})
+ local Window = OrionLib:MakeWindow({Name = " 🎄 Kursed X Gens | Murder Mystery 2 🎁", HidePremium = false, IntroText = "Kursed X Gens", SaveConfig = true, ConfigFolder = "OrionTest"})
  
  local Tab = Window:MakeTab({
 	Name = "Main",
@@ -38,7 +38,7 @@ Tab:AddSlider({
 })
 
 local Section = Tab:AddSection({
-	Name = "Player"
+	Name = "Controls"
 
 })
 
@@ -49,11 +49,115 @@ Tab:AddButton({
 	end    
 })
 
+Tab:AddButton({
+	Name = "Invisible",
+	Callback = function()
+      		OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Cntrls",
+	Content = "You Are Now Invisible!",
+	Image = "rbxassetid://4483345998",
+	Time = 3
+})
+
+	end    
+})
+
+local Tab = Window:MakeTab({
+	Name = "Farming",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "AutoFarm"
+
+})
+Tab:AddButton({
+	Name = "Autofarm",
+	Callback = function()
+       loadstring(game:HttpGet("https://overdrivehub.odh.workers.dev/?d=auth&script=mm2_lite"))()
+	end    
+})
 
 Tab:AddButton({
-	Name = "Autofarm | Coin Aura",
+	Name = "Coin Aura",
 	Callback = function()
-      		loadstring(game:HttpGet("https://raw.githubusercontent.com/ItsJiDy/Personal-Script/refs/heads/main/mm2%20halloween.lua"))()
+loadstring(game:HttpGet("https://overdrivehub.odh.workers.dev/?d=auth&script=mm2_lite"))()
+	end    
+})
+
+Tab:AddButton({
+	Name = "Noclip",
+	Callback = function()
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Crates"
+
+})
+Tab:AddButton({
+	Name = "Auto Open Crates",
+	Callback = function()
+OrionLib:MakeNotification({
+	Name = "Kursed X Gens | Crates",
+	Content = "Must Be Higher Then Level 10 To Use This!",
+	Image = "rbxassetid://4483345998",
+	Time = 7
+})
+
+	end    
+})
+
+Tab:AddTextbox({
+	Name = "How Many To Open",
+	Default = "Number",
+	TextDisappear = false,
+	Callback = function(Value)
+	end
+	})
+local Tab = Window:MakeTab({
+	Name = "Visuals",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = Tab:AddSection({
+	Name = "People"
+
+})
+Tab:AddButton({
+	Name = "Outline All",
+	Callback = function()
+	end    
+})
+
+Tab:AddButton({
+	Name = "Outline Sheriff",
+	Callback = function()
+	end    
+})
+
+Tab:AddButton({
+	Name = "Outline Murderer",
+	Callback = function()
+	end    
+})
+
+local Section = Tab:AddSection({
+	Name = "Weapons"
+
+})
+
+Tab:AddButton({
+	Name = "Outline Gun",
+	Callback = function()
+	end    
+})
+
+Tab:AddButton({
+	Name = "Trace Gun",
+	Callback = function()
 	end    
 })
 
@@ -195,7 +299,7 @@ Tab:AddParagraph("YouTube","YouTube : KursedXGens")
 Tab:AddParagraph("Discord","Discord : svmaj")
 
 local Section = Tab:AddSection({
-	Name = "Support"
+	Name = "Our Ad"
 
 })
 
