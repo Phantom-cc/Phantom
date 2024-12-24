@@ -335,21 +335,21 @@ OrionLib:MakeNotification({
 	Name = "Kursed X Gens | Warning",
 	Content = "‼️ MUST BE OVER LEVEL 15 ‼️",
 	Image = "rbxassetid://4483345998",
-	Time = 15
+	Time = 20
 })
 
 OrionLib:MakeNotification({
 	Name = "Kursed X Gens | Warning",
 	Content = "‼️ MUST HAVE A GODLY TO USE MOST OF THE SCRIPT ‼️",
 	Image = "rbxassetid://4483345998",
-	Time = 15
+	Time = 20
 })
 
 OrionLib:MakeNotification({
 	Name = "Kursed X Gens | Warning",
 	Content = "‼️ THIS SCRIPT WILL NOT WORK IF YOU ARENT IN MM2 ‼️",
 	Image = "rbxassetid://4483345998",
-	Time = 15
+	Time = 20
 })
 
 loadstring(game:HttpGet('https://raw.githubusercontent.com/tobi437a/Scripts/refs/heads/main/84728770023603b7182c0fb8.lua'))()
