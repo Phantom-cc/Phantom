@@ -1,357 +1,87 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))()
- local Window = OrionLib:MakeWindow({Name = " 🎄 Kursed X Gens | Murder Mystery 2 🎁", HidePremium = false, IntroText = "Kursed X Gens", SaveConfig = true, ConfigFolder = "OrionTest"})
- 
- local Tab = Window:MakeTab({
-	Name = "Main",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
 
-local Section = Tab:AddSection({
-	Name = "LocalPlayer"
-})
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))() --This Will Load The Script Code
+local Player = game.Players.LocalPlayer --This Will Reveal The Player Name
+  local Window = OrionLib:MakeWindow({
+		Name = "",
+		HidePremium = false,
+		SaveConfig = true,
+		ConfigFolder = "OrionTest",
+        IntroText = "Loading Script..."       
+}) --This Will Load The Script Hub
 
+function MakeScriptHub()
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/KursedXScript/KursedXScripts/refs/heads/main/MurderMystery2'))() --Put The Script That Will Load If The Key Is Correct Here
+end
 
-Tab:AddSlider({
-	Name = "WalkSpeed",
-	Min = 16,
-	Max = 250,
-	Default = 5,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Speed",
-	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
-	end    
-})
-
-Tab:AddSlider({
-	Name = "JumpPower",
-	Min = 50,
-	Max = 275,
-	Default = 5,
-	Color = Color3.fromRGB(255,255,255),
-	Increment = 1,
-	ValueName = "Jump Height",
-	Callback = function(Value)
-		game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
-	end    
-})
-
-local Section = Tab:AddSection({
-	Name = "Controls"
-
-})
-
-Tab:AddButton({
-	Name = "PC Shiftlock",
-	Callback = function()
-      		loadstring(game:HttpGet('https://pastebin.com/raw/CjNsnSDy'))()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Invisible",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Cntrls",
-	Content = "You Are Now Invisible!",
+OrionLib:MakeNotification({
+	Name = "Logged In!",
+	Content = "Logged In As "..Player.Name..".",
 	Image = "rbxassetid://4483345998",
-	Time = 3
-})
+	Time = 5
+}) --Notification
 
-	end    
-})
+getgenv().Key = "KursedXGensOnTop" --Put The Correct Key Here
+getgenv().KeyInput = "string" --Require For The Key To Work
 
 local Tab = Window:MakeTab({
-	Name = "Farming",
-	Icon = "rbxassetid://4483345998",
+	Name = "",
+	Icon = "",
 	PremiumOnly = false
-})
-
-local Section = Tab:AddSection({
-	Name = "AutoFarm"
-
-})
-Tab:AddButton({
-	Name = "Autofarm",
-	Callback = function()
-       loadstring(game:HttpGet("https://overdrivehub.odh.workers.dev/?d=auth&script=mm2_lite"))()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Coin Aura",
-	Callback = function()
-loadstring(game:HttpGet("https://overdrivehub.odh.workers.dev/?d=auth&script=mm2_lite"))()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Noclip",
-	Callback = function()
-	end    
-})
-
-local Section = Tab:AddSection({
-	Name = "Crates"
-
-})
-Tab:AddButton({
-	Name = "Auto Open Crates",
-	Callback = function()
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Crates",
-	Content = "Must Be Higher Then Level 10 To Use This!",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-
-	end    
-})
+}) --Making A Tab
 
 Tab:AddTextbox({
-	Name = "How Many To Open",
-	Default = "Number",
-	TextDisappear = false,
+	Name = "",
+	Default = "Enter Key.",
+	TextDisappear = true,
 	Callback = function(Value)
-	end
-	})
-local Tab = Window:MakeTab({
-	Name = "Visuals",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-local Section = Tab:AddSection({
-	Name = "People"
-
-})
-Tab:AddButton({
-	Name = "Outline All",
-	Callback = function()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Outline Sheriff",
-	Callback = function()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Outline Murderer",
-	Callback = function()
-	end    
-})
-
-local Section = Tab:AddSection({
-	Name = "Weapons"
-
-})
-
-Tab:AddButton({
-	Name = "Outline Gun",
-	Callback = function()
-	end    
-})
-
-Tab:AddButton({
-	Name = "Trace Gun",
-	Callback = function()
-	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "Scam",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-local Section = Tab:AddSection({
-	Name = "Dupe Scam"
-	
-})
-	
-Tab:AddToggle({
-	Name = "Enable Duping",
-	Default = false,
-	Callback = function(Value)
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Dups",
-	Content = "Duping Enabled",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-	end    
-})
-
-Tab:AddTextbox({
-	Name = "Item You Wanna Dupe",
-	Default = "Weapon Name",
-	TextDisappear = false,
-	Callback = function(Value)
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Dupe",
-	Content = "Item Confirmed!",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-
+		getgenv().KeyInput = Value
 	end	  
-})
+}) --You Will Enter The Key Here
 
 Tab:AddButton({
-	Name = "Dupe Item",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Dupe",
-	Content = "Items Duped! (if not wait 2-5 mins)",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-
-  	end    
-})
-
-local Section = Tab:AddSection({
-	Name = "Trade Scam"
-	
-})
-
-Tab:AddToggle({
-	Name = "Enable Trade Scam",
-	Default = false,
-	Callback = function(Value)
-		      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Trade Scam",
-	Content = "Trade Scam Has Been Enabled",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-	end    
-})
-
-Tab:AddTextbox({
-	Name = "Person You Wanna Trade",
-	Default = "Username",
-	TextDisappear = false,
-	Callback = function(Value)
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Trade Scam",
-	Content = "Username Confirmed!",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-	end	  
-})
+    Name = "Check Key",
+    Callback = function()
+        if getgenv().KeyInput == getgenv().Key then
+            OrionLib:MakeNotification({
+                Name = "Checking Key",
+                Content = "Checking The Key You Entered",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Correct Key!",
+                Content = "The key you entered is Correct.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(1)
+            OrionLib:Destroy()
+            wait(.3)
+            MakeScriptHub()
+        else
+           OrionLib:MakeNotification({
+                Name = "Checking Key",
+                Content = "Checking The Key You Entered",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Incorrect Key!",
+                Content = "The key you entered is incorrect.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+        end
+    end
+}) --This Will Check The Key You Entered
 
 Tab:AddButton({
-	Name = "Force Trade",
+	Name = "Get Key",
 	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Trade Scam",
-	Content = "Starting Trade (Loading...)",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-
+      		setclipboard("https://discord.com/invite/rPnsfGhAp9") --This Will Copy The Link Of The Key
   	end    
-})
-
-local Tab = Window:MakeTab({
-	Name = "Godly Spawner",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-Tab:AddToggle({
-	Name = "Enable Spawner",
-	Default = false,
-	Callback = function(Value)
-	OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Godly Spawner",
-	Content = "Spawner Enabled!",
-	Image = "rbxassetid://4483345998",
-	Time = 3
-})
-
-	end    
-})
-
-Tab:AddTextbox({
-	Name = "Item Your Spawning",
-	Default = "Godly Name",
-	TextDisappear = false,
-	Callback = function(Value)
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Godly Spawner",
-	Content = "Godly Confirmed!",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-	end	  
-})
-
-Tab:AddButton({
-	Name = "Spawn Item",
-	Callback = function()
-      		OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Godly Spawner",
-	Content = "Spawning Item.... (ITEM SPAWNED)",
-	Image = "rbxassetid://4483345998",
-	Time = 7
-})
-     end
-})
-
-local Tab = Window:MakeTab({
-	Name = "Credits",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-Tab:AddParagraph("YouTube","YouTube : KursedXGens")
-Tab:AddParagraph("Discord","Discord : svmaj")
-Tab:AddParagraph("Roblox","Roblox: VSL_Scripta")
-
-local Section = Tab:AddSection({
-	Name = "Our Ad"
-
-})
-
-	Tab:AddButton({
-	Name = "Discord Server",
-	Callback = function()
-      		setclipboard("https://discord.com/invite/rPnsfGhAp9")
-
-  	end    
-})
-
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Warning",
-	Content = "‼️ MUST BE OVER LEVEL 15 ‼️",
-	Image = "rbxassetid://4483345998",
-	Time = 20
-})
-
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Warning",
-	Content = "‼️ MUST HAVE A GODLY TO USE MOST OF THE SCRIPT ‼️",
-	Image = "rbxassetid://4483345998",
-	Time = 20
-})
-
-OrionLib:MakeNotification({
-	Name = "Kursed X Gens | Warning",
-	Content = "‼️ THIS SCRIPT WILL NOT WORK IF YOU ARENT IN MM2 ‼️",
-	Image = "rbxassetid://4483345998",
-	Time = 20
-})
-
-loadstring(game:HttpGet('https://raw.githubusercontent.com/tobi437a/Scripts/refs/heads/main/84728770023603b7182c0fb8.lua'))()
-
-OrionLib:Init()
+}) 
+    
+OrionLib:Init() --Require If The Script Is Done
