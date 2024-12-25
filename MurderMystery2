@@ -1,4 +1,3 @@
-
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))() --This Will Load The Script Code
 local Player = game.Players.LocalPlayer --This Will Reveal The Player Name
   local Window = OrionLib:MakeWindow({
@@ -10,7 +9,7 @@ local Player = game.Players.LocalPlayer --This Will Reveal The Player Name
 }) --This Will Load The Script Hub
 
 function MakeScriptHub()
-         loadstring(game:HttpGet('https://raw.githubusercontent.com/KursedXScript/KursedXScripts/refs/heads/main/MurderMystery2'))() --Put The Script That Will Load If The Key Is Correct Here
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/KursedXScript/KursedXScript/refs/heads/main/MurderMystery2'))() --Put The Script That Will Load If The Key Is Correct Here
 end
 
 OrionLib:MakeNotification({
@@ -20,7 +19,7 @@ OrionLib:MakeNotification({
 	Time = 5
 }) --Notification
 
-getgenv().Key = "KursedXGensOnTop" --Put The Correct Key Here
+getgenv().Key = "KursedXGensONTOP" --Put The Correct Key Here
 getgenv().KeyInput = "string" --Require For The Key To Work
 
 local Tab = Window:MakeTab({
