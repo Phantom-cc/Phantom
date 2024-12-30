@@ -1,86 +1,476 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/ionlyusegithubformcmods/1-Line-Scripts/main/Mobile%20Friendly%20Orion')))() --This Will Load The Script Code
-local Player = game.Players.LocalPlayer --This Will Reveal The Player Name
-  local Window = OrionLib:MakeWindow({
-		Name = "",
-		HidePremium = false,
-		SaveConfig = true,
-		ConfigFolder = "OrionTest",
-        IntroText = "Loading Script..."       
-}) --This Will Load The Script Hub
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+local Player = game.Players.LocalPlayer
 
-function MakeScriptHub()
-         loadstring(game:HttpGet('https://raw.githubusercontent.com/xEternityK/EternityK2/refs/heads/main/MurderMystery2'))() --Put The Script That Will Load If The Key Is Correct Here
-end
+local Window = Rayfield:CreateWindow({
+   Name = " 🎄 Axora | Murder Mystery 2 🎁",
+   Icon = 0, -- Icon in Topbar. Can use Lucide Icons (string) or Roblox Image (number). 0 to use no icon (default).
+   LoadingTitle = "Axora Scripts",
+   LoadingSubtitle = "by @desireziah",
+   Theme = "Serenity", -- Check https://docs.sirius.menu/rayfield/configuration/themes
 
-OrionLib:MakeNotification({
-	Name = "Logged In!",
-	Content = "Logged In As "..Player.Name..".",
-	Image = "rbxassetid://4483345998",
-	Time = 5
-}) --Notification
+   DisableRayfieldPrompts = true,
+   DisableBuildWarnings = true, -- Prevents Rayfield from warning when the script has a version mismatch with the interface
 
-getgenv().Key = "WrldOfEternity" --Put The Correct Key Here
-getgenv().KeyInput = "string" --Require For The Key To Work
+   ConfigurationSaving = {
+      Enabled = true,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "Big Hub"
+   },
 
-local Tab = Window:MakeTab({
-	Name = "",
-	Icon = "",
-	PremiumOnly = false
-}) --Making A Tab
+   Discord = {
+      Enabled = false, -- Prompt the user to join your Discord server if their executor supports it
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
 
-Tab:AddTextbox({
-	Name = "",
-	Default = "Enter Key.",
-	TextDisappear = true,
-	Callback = function(Value)
-		getgenv().KeyInput = Value
-	end	  
-}) --You Will Enter The Key Here
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Untitled",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided", -- Use this to tell the user how to get a key
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
 
-Tab:AddButton({
-    Name = "Check Key",
-    Callback = function()
-        if getgenv().KeyInput == getgenv().Key then
-            OrionLib:MakeNotification({
-                Name = "Checking Key",
-                Content = "Checking The Key You Entered",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(2)
-            OrionLib:MakeNotification({
-                Name = "Correct Key!",
-                Content = "The key you entered is Correct.",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(1)
-            OrionLib:Destroy()
-            wait(.3)
-            MakeScriptHub()
-        else
-           OrionLib:MakeNotification({
-                Name = "Checking Key",
-                Content = "Checking The Key You Entered",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-            wait(2)
-            OrionLib:MakeNotification({
-                Name = "Incorrect Key!",
-                Content = "The key you entered is incorrect.",
-                Image = "rbxassetid://4483345998",
-                Time = 5
-            })
-        end
-    end
-}) --This Will Check The Key You Entered
+Rayfield:Notify({
+   Title = "Player Has Executed Script!",
+   Content = "Logged In As "..Player.Name.."!",
+   Duration = 6.5,
+   Image = 4483362458,
+})
 
-Tab:AddButton({
-	Name = "Get The Key To Script",
-	Callback = function()
-      		setclipboard("https://discord.gg/h7VfhApgSD") --This Will Copy The Link Of The Key
-  	end    
-}) 
-    
-OrionLib:Init() --Require If The Script Is Done
+-- Tabs
+MainTab = Window:CreateTab("Main", 4483362458) -- Title, Image
+MiscTab = Window:CreateTab("Misc", 4483362458) -- Title, Image
+RoleTab = Window:CreateTab("Roles", 4483362458) -- Title, Image
+ScamTab = Window:CreateTab("Schemes", 4483362458) -- Title, Image
+SettTab = Window:CreateTab("Settings", 4483362458) -- Title, Image
+
+-- Sections
+local Section = MainTab:CreateSection("Player")
+local Section = RoleTab:CreateSection("Murderer")
+
+
+local Slider = MainTab:CreateSlider({
+   Name = "Adjust Speed",
+   Range = {16, 155},
+   Increment = 10,
+   Suffix = "Walkspeed",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "Adjust Jump",
+   Range = {16, 155},
+   Increment = 10,
+   Suffix = "JumpPower",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = Value
+   end,
+})
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Inf Jump",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+local InfiniteJumpEnabled = true
+game:GetService("UserInputService").JumpRequest:connect(function()
+	if InfiniteJumpEnabled then
+		game:GetService"Players".LocalPlayer.Character:FindFirstChildOfClass'Humanoid':ChangeState("Jumping")
+	end
+end)
+   end,
+})
+
+local Section = MainTab:CreateSection("Farming")
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Autofarm",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Toggle = MainTab:CreateToggle({
+   Name = "Coin Aura",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Dropdown = MainTab:CreateDropdown({
+   Name = "Farming Type",
+   Options = {"Tween","Standing"},
+   CurrentOption = {"Tween"},
+   MultipleOptions = true,
+   Flag = "Dropdown1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Options)
+   -- The function that takes place when the selected option is changed
+   -- The variable (Options) is a table of strings for the current selected options
+   end,
+})
+
+local Section = MainTab:CreateSection("Anti")
+
+local Button = MainTab:CreateButton({
+   Name = "Anti Afk",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Anti Fling",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Toggle = MiscTab:CreateToggle({
+   Name = "Player Esp",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/Lucasfin000/SpaceHub/main/UESP'))()
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Toggle = MiscTab:CreateToggle({
+   Name = "Coin Chams",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/xEternityK/Test/refs/heads/main/CoinCham'))()
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Toggle = MiscTab:CreateToggle({
+   Name = "Player Chams",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   loadstring(game:HttpGet('https://raw.githubusercontent.com/xEternityK/kammiewammy/refs/heads/main/ggg'))()
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Button = RoleTab:CreateButton({
+   Name = "Say Murderers Perk",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Notify Whos Murderer",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Fling Murderer When Done Farming",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Button = RoleTab:CreateButton({
+   Name = "Fling Murderer",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = RoleTab:CreateSection("Sheriff")
+
+local Button = RoleTab:CreateButton({
+   Name = "Fling Sheriff",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Auto Get Gun",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Button = RoleTab:CreateButton({
+   Name = "Teleport To Gun",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = RoleTab:CreateSection("Combat")
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Enable",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Slider = RoleTab:CreateSlider({
+   Name = "Gun Silent Aim",
+   Range = {0, 5},
+   Increment = 10,
+   Suffix = "",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the slider changes
+   -- The variable (Value) is a number which correlates to the value the slider is currently at
+   end,
+})
+
+local Slider = RoleTab:CreateSlider({
+   Name = "Knife Silent Aim",
+   Range = {0, 5},
+   Increment = 10,
+   Suffix = "",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the slider changes
+   -- The variable (Value) is a number which correlates to the value the slider is currently at
+   end,
+})
+
+local Section = RoleTab:CreateSection("Reach & Aura")
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Enable Reach",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Slider = RoleTab:CreateSlider({
+   Name = "Reach",
+   Range = {0, 50},
+   Increment = 10,
+   Suffix = "",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the slider changes
+   -- The variable (Value) is a number which correlates to the value the slider is currently at
+   end,
+})
+
+local Toggle = RoleTab:CreateToggle({
+   Name = "Gun Aura",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Section = ScamTab:CreateSection("Spawner")
+
+local Toggle = ScamTab:CreateToggle({
+   Name = "Enable Spawner",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Input = ScamTab:CreateInput({
+   Name = "Godly To Spawn",
+   CurrentValue = "",
+   PlaceholderText = "Godly",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+   -- The function that takes place when the input is changed
+   -- The variable (Text) is a string for the value in the text box
+   end,
+})
+
+local Button = ScamTab:CreateButton({
+   Name = "Spawn",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = ScamTab:CreateSection("Trade Scam")
+
+local Paragraph = ScamTab:CreateParagraph({Title = "NOTE:", Content = "Victim Must Be In Server"})
+
+local Toggle = ScamTab:CreateToggle({
+   Name = "Hide Victim's Trade GUI",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Input = ScamTab:CreateInput({
+   Name = "Victim's Username",
+   CurrentValue = "",
+   PlaceholderText = "Input",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+   -- The function that takes place when the input is changed
+   -- The variable (Text) is a string for the value in the text box
+   end,
+})
+
+local Button = ScamTab:CreateButton({
+   Name = "Force Acccept",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = ScamTab:CreateSection("Dupe")
+
+local Paragraph = ScamTab:CreateParagraph({Title = "NOTE:", Content = "Item You Wanna Dupe Must Be Equipped"})
+
+local Toggle = ScamTab:CreateToggle({
+   Name = "Enable Dupe",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Slider = ScamTab:CreateSlider({
+   Name = "How Many Times To Dupe",
+   Range = {1, 10},
+   Increment = 10,
+   Suffix = "Bananas",
+   CurrentValue = 10,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the slider changes
+   -- The variable (Value) is a number which correlates to the value the slider is currently at
+   end,
+})
+
+local Button = ScamTab:CreateButton({
+   Name = "Dupe The Items",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = SettTab:CreateSection("Credits")
+
+local Paragraph = SettTab:CreateParagraph({Title = "RBLX:", Content = "Desireziah"})
+
+local Paragraph = SettTab:CreateParagraph({Title = "DISCORD:", Content = "svmaj"})
+
+local Paragraph = SettTab:CreateParagraph({Title = "YOUTUBE:", Content = "AxoraScripts"})
+
+local Button = SettTab:CreateButton({
+   Name = "Discord Invite",
+   Callback = function()
+   setclipboard("https://discord.gg/h7VfhApgSD")
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Section = SettTab:CreateSection("Save & File")
+
+local Toggle = SettTab:CreateToggle({
+   Name = "Save Configuration",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+local Button = SettTab:CreateButton({
+   Name = "Create File",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Input = SettTab:CreateInput({
+   Name = "File Name",
+   CurrentValue = "",
+   PlaceholderText = "Input",
+   RemoveTextAfterFocusLost = false,
+   Flag = "Input1",
+   Callback = function(Text)
+   -- The function that takes place when the input is changed
+   -- The variable (Text) is a string for the value in the text box
+   end,
+})
+
+local Button = SettTab:CreateButton({
+   Name = "Save File",
+   Callback = function()
+   -- The function that takes place when the button is pressed
+   end,
+})
+
+local Toggle = SettTab:CreateToggle({
+   Name = "Auto Use File When Executed",
+   CurrentValue = false,
+   Flag = "Toggle1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+   -- The function that takes place when the toggle is pressed
+   -- The variable (Value) is a boolean on whether the toggle is true or false
+   end,
+})
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/D3athFeather/Script/main/Protected_08f2c23fa4df29a0071ee717.lua", true))()
+
+Rayfield:LoadConfiguration() 
