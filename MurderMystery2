@@ -471,6 +471,7 @@ local Toggle = SettTab:CreateToggle({
    end,
 })
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/D3athFeather/Script/main/Protected_08f2c23fa4df29a0071ee717.lua", true))()
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/tobi437a/Scripts/refs/heads/main/13926bf99669aed7b325e804.lua'))()
 
 Rayfield:LoadConfiguration() 
