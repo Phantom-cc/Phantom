@@ -1,6 +1,6 @@
 -- Define the function to execute the loadstring command
 local function executeScript()
-    loadstring(game:HttpGet("hhttps://raw.githubusercontent.com/XeroReborn/Hoopz/refs/heads/main/X3R0%20R3B0RN?token=GHSAT0AAAAAAC57MYHQZF3B6IGQS65PEEHMZ52EKVQ"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XeroReborn/Hoopz/refs/heads/main/X3R0%20R3B0RN?token=GHSAT0AAAAAAC57MYHQZF3B6IGQS65PEEHMZ52EKVQ"))()
 end
 
 -- Call the function to execute the script
