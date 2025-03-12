@@ -143,36 +143,6 @@ local ToggleIndicator = Tab1:Toggle({
     Desc = "",
     Value = true,
     Callback = function(state)
-        if state then
-            ScreenGui = Instance.new("ScreenGui")
-            ScreenGui.Parent = Player:WaitForChild("PlayerGui")
-
-            local TextLabel = Instance.new("TextLabel")
-            TextLabel.Parent = ScreenGui
-            TextLabel.Size = UDim2.new(0.3, 0, 0.05, 0)
-            TextLabel.Position = UDim2.new(0.35, 0, 0, 10)
-            TextLabel.BackgroundTransparency = 1
-            TextLabel.TextScaled = true
-            TextLabel.TextColor3 = Color3.new(1, 1, 1)
-            TextLabel.Font = Enum.Font.SourceSansBold
-            TextLabel.Text = "Indicator Active"
-
-            RunService.RenderStepped:Connect(function()
-                local Goal, Distance = GetGoal()
-                if Goal then
-                    TextLabel.Text = "Accuracy Distance: " .. math.floor(Distance)
-                    TextLabel.TextColor3 = Distance <= 72 and Color3.new(0, 1, 0) or Color3.new(1, 0, 0)
-                else
-                    TextLabel.Text = "No Hoop Detected"
-                    TextLabel.TextColor3 = Color3.new(1, 1, 1)
-                end
-            end)
-        else
-            if ScreenGui then
-                ScreenGui:Destroy()
-                ScreenGui = nil
-            end
-        end
     end
 })
 
@@ -198,7 +168,7 @@ local Slider1 = Tab1:Slider({
     Step = 1,
     Value = {
         Min = 0,
-        Max = 10,
+        Max = 15,
         Default = 0,
     },
     Callback = function(value)
@@ -213,7 +183,7 @@ local Slider2 = Tab1:Slider({
     Step = 1,
     Value = {
         Min = 0,
-        Max = 15,
+        Max = 20,
         Default = 0,
     },
     Callback = function(value)
@@ -273,7 +243,7 @@ local Slider3 = Tab1:Slider({
     Step = 1,
     Value = {
         Min = 0,
-        Max = 2,
+        Max = 3,
         Default = 0,
     },
     -- Callback for when the slider value changes
